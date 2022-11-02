@@ -2,7 +2,7 @@ i {
     font-size: 24px;
 }
 
- input {
+input {
     width: 100%;
 }
 
@@ -19,6 +19,10 @@ i {
     height: calc(100vh - 240px);
 }
 
+.single_contact:hover {
+    cursor: pointer;
+}
+
 .chat_profile {
     height: 96px;
 }
@@ -32,4 +36,8 @@ i {
 
 .texting {
     height: 96px;
+}
+
+.active {
+    background-color: lightblue;
 }

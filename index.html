@@ -78,13 +78,13 @@
 
 
                         <div class="row p-2 display_contacts">
-                            <div class="col-12" v-for="(object, index) in contacts">
-                                <div class=" d-flex align-items-center">
+                            <div class="col-12 single_contact" v-for="(object, index) in contacts">
+                                <div class=" d-flex align-items-center" :class = "activeIndex === index ? 'active' : ''" @click = "setActiveIndex(index)">
 
                                     <img :src="'./assets/img/avatar'+ object.avatar +'.jpg'" alt=""
-                                        class="img-fluid col-2 align-middle">
+                                        class="img-fluid col-2">
 
-                                    <div class="p-2 single_contact col-10">
+                                    <div class="p-2 col-10">
                                         <h5 class="m-0">{{object.name}}</h5>
                                         <p class="m-0">Ultimo messaggio inviato</p>
                                     </div>
@@ -99,8 +99,8 @@
                             <div class="col-3">
 
                                 <div class="p-1 d-flex align-items-center">
-                                    <img src="./assets/img/avatar_io.jpg" alt="" class="img-fluid p-1 col-3">
-                                    <h6 class="p-1">Sofia</h6>
+                                    <img :src="'./assets/img/avatar'+ contacts[activeIndex].avatar +'.jpg'" alt="" class="img-fluid p-1 col-3">
+                                    <h6 class="p-1">{{contacts[activeIndex].name}}</h6>
                                 </div>
 
                             </div>
