@@ -27,48 +27,68 @@
         <main id="site_main">
             <div class="wrapper vh-100">
                 <div class="row">
-                    <div class="col-3 p-3">
-                        <div class="row justify-content-between align-items-center">
-                            <div class="col-3">
+                    <div class="col-3">
 
-                                <div class="p-1 d-flex align-items-center">
-                                    <img src="./assets/img/avatar_io.jpg" alt="" class="img-fluid p-1">
-                                    <h6 class="p-1">Sofia</h6>
+                        <div class="static_section">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-3">
+
+                                    <div class="p-1 d-flex align-items-center">
+                                        <img src="./assets/img/avatar_io.jpg" alt="" class="img-fluid p-1">
+                                        <h6 class="p-1">Sofia</h6>
+                                    </div>
+
                                 </div>
 
-                            </div>
+                                <div class="col-6">
 
-                            <div class="col-6">
-
-                                <div class="p-1 d-flex justify-content-end">
-                                    <i class="fa-solid fa-circle-notch p-2"></i>
-                                    <i class="fa-solid fa-message p-2"></i>
-                                    <i class="fa-solid fa-ellipsis-vertical p-2"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-
-                            <div class="p-3">
-                                <div class="p-1 d-flex align-items-center">
-                                    <i class="fa-solid fa-bell-slash"></i>
-                                    <div class="receive_notifications ms-3">
-                                        <h6>Ricevi notifche di nuovi messaggi</h6>
-                                        <p class="text-decoration-underline">Attiva le notifiche desktop</p>
+                                    <div class="p-1 d-flex justify-content-end">
+                                        <i class="fa-solid fa-circle-notch p-2"></i>
+                                        <i class="fa-solid fa-message p-2"></i>
+                                        <i class="fa-solid fa-ellipsis-vertical p-2"></i>
                                     </div>
                                 </div>
                             </div>
-                                  
+
+                            <div class="row">
+
+                                <div class="p-3">
+                                    <div class="p-1 d-flex align-items-center">
+                                        <i class="fa-solid fa-bell-slash"></i>
+                                        <div class="receive_notifications ms-3">
+                                            <h6>Ricevi notifche di nuovi messaggi</h6>
+                                            <p class="text-decoration-underline">Attiva le notifiche desktop</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="p-1 d-flex align-items-center">
+                                    <div class="col-2 d-flex justify-content-center">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </div>
+                                    <div class="col-10">
+                                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="row">
-                            <div class="p-1 d-flex align-items-center">
-                                <div class="col-2 d-flex justify-content-center">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </div>
-                                <div class="col-10">
-                                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+
+                        <div class="row p-2 display_contacts">
+                            <div class="col-12" v-for="(object, index) in contacts">
+                                <div class=" d-flex align-items-center">
+
+                                    <img :src="'./assets/img/avatar'+ object.avatar +'.jpg'" alt=""
+                                        class="img-fluid col-2 align-middle">
+
+                                    <div class="p-2 single_contact col-10">
+                                        <h5 class="m-0">{{object.name}}</h5>
+                                        <p class="m-0">Ultimo messaggio inviato</p>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

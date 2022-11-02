@@ -6,3 +6,13 @@
 .col-10 input {
     width: 100%;
 }
+
+
+.static_section {
+    height: 240px;
+}
+
+.display_contacts {
+    overflow-y: auto;
+    height: calc(100vh - 240px);
+}
