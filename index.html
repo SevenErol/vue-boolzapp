@@ -115,7 +115,13 @@
                             </div>
                         </div>
 
-                        <div class="chat"></div>
+                        <div class="chat">
+                            <div class="messages_list">
+                                <div v-for = "object in contacts[activeIndex].messages">
+                                    {{ object.message }}
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="texting d-flex align-items-center">
                             <div class="row container-fluid">
