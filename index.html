@@ -24,13 +24,24 @@
 
     <div id="app">
 
+        <!-- main WebApp page -->
         <main id="site_main">
+
+            <!-- wrapper with viewport height fixed 100 -->
             <div class="wrapper vh-100">
+
                 <div class="row">
+
+                    <!-- left column of the page -->
                     <div class="col-3">
 
+                        <!-- static block of information with fixed height -->
                         <div class="static_section">
+
+                            <!-- first row my profile info -->
                             <div class="row justify-content-between align-items-center my_profile">
+
+                                <!-- column in first row with my profile image and name -->
                                 <div class="col-3">
 
                                     <div class="p-1 d-flex align-items-center">
@@ -40,6 +51,7 @@
 
                                 </div>
 
+                                <!-- column in first row with interactive icons -->
                                 <div class="col-6">
 
                                     <div class="p-1 d-flex justify-content-end">
@@ -47,59 +59,91 @@
                                         <i class="fa-solid fa-message p-2"></i>
                                         <i class="fa-solid fa-ellipsis-vertical p-2"></i>
                                     </div>
+
                                 </div>
                             </div>
 
+                            <!-- second row notifications info -->
                             <div class="row">
 
+                                <!-- bell section start with background color var(--bg-bell) -->
                                 <div class="p-3 bell_section">
+
                                     <div class="p-1 d-flex align-items-center">
+
+                                        <!-- div with centered bell icon -->
                                         <div class="bell_container d-flex justify-content-center align-items-center">
                                             <i class="fa-solid fa-bell-slash"></i>
                                         </div>
                                         
+                                        <!-- description notify bell functions -->
                                         <div class="receive_notifications ms-3">
-                                            <h6>Ricevi notifche di nuovi messaggi</h6>
+                                            <h6>Ricevi notifiche di nuovi messaggi</h6>
                                             <p class="text-decoration-underline">Attiva le notifiche desktop</p>
                                         </div>
+
                                     </div>
                                 </div>
 
                             </div>
 
+                            <!-- third row search bar  -->
                             <div class="row">
+
                                 <div class="p-1 d-flex align-items-center">
+
+                                    <!-- magnifying glass icon centered horizontally -->
                                     <div class="col-2 d-flex justify-content-center">
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                     </div>
+
+                                    <!-- input search chat -->
                                     <div class="col-10">
                                         <input type="text" placeholder="Cerca o inizia una nuova chat">
                                     </div>
+
                                 </div>
+
                             </div>
+
                         </div>
 
-
+                        
+                        <!-- fourth row contacts displayer with overflow -->
                         <div class="row p-2 display_contacts">
+
+                            <!-- single contacts generated dinamically with Vue.js -->
                             <div class="col-12 single_contact" v-for="(object, index) in contacts">
+
+                                <!-- ternary operator for class 'active' and function on click to capture selected index -->
                                 <div class=" d-flex align-items-center p-2" :class="activeIndex === index ? 'active' : ''"
                                     @click="setActiveIndex(index)">
 
+                                    <!-- img url generated dinamically -->
                                     <img :src="'./assets/img/avatar'+ object.avatar +'.jpg'" alt=""
                                         class="img-fluid col-2">
 
+                                    <!-- userName and last sent message -->
                                     <div class="p-2 col-10">
                                         <h5 class="m-0">{{object.name}}</h5>
                                         <p class="m-0">Ultimo messaggio inviato</p>
                                     </div>
 
                                 </div>
+
                             </div>
+
                         </div>
+
                     </div>
 
+                    <!-- right column of the page -->
                     <div class="col-9">
+
+                        <!-- first row profile who i am chatting with -->
                         <div class="row chat_profile align-items-center justify-content-between">
+
+                            <!-- column with image and contact name -->
                             <div class="col-3">
 
                                 <div class="p-1 d-flex align-items-center">
@@ -110,6 +154,7 @@
 
                             </div>
 
+                            <!-- column with intercative icons -->
                             <div class="col-6">
 
                                 <div class="p-1 d-flex justify-content-end">
@@ -117,49 +162,88 @@
                                     <i class="fa-solid fa-paperclip p-3"></i>
                                     <i class="fa-solid fa-ellipsis-vertical p-3"></i>
                                 </div>
+
                             </div>
+
                         </div>
 
+                        <!-- chat display section with overflow -->
                         <div class="chat">
+
                             <div class="messages_list d-flex">
+
+                                <!-- column with received messages visible -->
                                 <div class="received_column col-6">
+
+                                    <!-- v-for directive to generate in DOM every message with rightful class -->
                                     <div v-for="object in contacts[activeIndex].messages" :class = "object.status === 'received' ? 'received' : 'transparent'">
+
+                                        <!-- v-show directive to show only the received messages in DOM -->
                                         <div class="p-1" v-show = "object.status === 'received'">{{object.message}}</div>
+
                                     </div>
+
                                 </div>
 
+                                <!-- column with sent messages visible -->
                                 <div class="sent_column col-6">
+
+                                    <!-- v-for directive to generate in DOM every message with rightful class -->
                                     <div v-for="object in contacts[activeIndex].messages" :class = "object.status === 'sent' ? 'sent' : 'transparent'">
+
+                                        <!-- v-show directive to show only the received messages in DOM -->
                                         <div class="p-1" v-show = "object.status === 'sent'">{{object.message}}</div>
+
                                     </div>
+
                                 </div>
 
                             </div>
                         </div>
 
+                        <!-- bottom texting area -->
                         <div class="texting d-flex align-items-center">
+
+                            <!-- row with column division -->
                             <div class="row container-fluid">
+
+                                <!-- first column for smile icon -->
                                 <div class="col-2">
+
                                     <div class="d-flex justify-content-center">
                                         <i class="fa-regular fa-face-smile"></i>
                                     </div>
+
                                 </div>
+
+                                <!-- second column for input messages -->
                                 <div class="col-8">
+
                                     <div>
                                         <input type="text" placeholder="Scrivi qui un messaggio">
                                     </div>
+
                                 </div>
+
+                                <!-- third column for audio messages icon -->
                                 <div class="col-2">
+
                                     <div class="d-flex justify-content-center">
                                         <i class="fa-solid fa-microphone"></i>
                                     </div>
+
                                 </div>
+
                             </div>
+
                         </div>
 
                     </div>
+
                 </div>
+
             </div>
+            
         </main>
 
     </div>
