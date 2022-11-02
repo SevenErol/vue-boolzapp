@@ -30,7 +30,7 @@
                     <div class="col-3">
 
                         <div class="static_section">
-                            <div class="row justify-content-between align-items-center">
+                            <div class="row justify-content-between align-items-center my_profile">
                                 <div class="col-3">
 
                                     <div class="p-1 d-flex align-items-center">
@@ -52,9 +52,12 @@
 
                             <div class="row">
 
-                                <div class="p-3">
+                                <div class="p-3 bell_section">
                                     <div class="p-1 d-flex align-items-center">
-                                        <i class="fa-solid fa-bell-slash"></i>
+                                        <div class="bell_container d-flex justify-content-center align-items-center">
+                                            <i class="fa-solid fa-bell-slash"></i>
+                                        </div>
+                                        
                                         <div class="receive_notifications ms-3">
                                             <h6>Ricevi notifche di nuovi messaggi</h6>
                                             <p class="text-decoration-underline">Attiva le notifiche desktop</p>
@@ -79,7 +82,7 @@
 
                         <div class="row p-2 display_contacts">
                             <div class="col-12 single_contact" v-for="(object, index) in contacts">
-                                <div class=" d-flex align-items-center" :class="activeIndex === index ? 'active' : ''"
+                                <div class=" d-flex align-items-center p-2" :class="activeIndex === index ? 'active' : ''"
                                     @click="setActiveIndex(index)">
 
                                     <img :src="'./assets/img/avatar'+ object.avatar +'.jpg'" alt=""
@@ -143,7 +146,7 @@
                                 </div>
                                 <div class="col-8">
                                     <div>
-                                        <input type="text">
+                                        <input type="text" placeholder="Scrivi qui un messaggio">
                                     </div>
                                 </div>
                                 <div class="col-2">

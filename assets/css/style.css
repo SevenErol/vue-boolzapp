@@ -1,9 +1,48 @@
+:root {
+    --bg-gray: #EAEAEA;
+    --bg-user: #E9EBEB;
+    --bg-bell: #8EDAFC;
+    --bg-sent: #D5F9BA;
+    --icon-color: #B1B1B1;
+}
+
 i {
     font-size: 24px;
+    color: var(--icon-color) ;
 }
 
 input {
     width: 100%;
+}
+
+img {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+}
+
+.my_profile,
+.chat_profile {
+    background-color: var(--bg-gray);
+    height: 96px;
+}
+
+.my_profile {
+    border-right: 1px solid lightgray;
+}
+
+.bell_section {
+    background-color:var(--bg-bell);
+}
+
+.bell_container {
+    aspect-ratio: 1 / 1;
+    background-color: white;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.fa-bell-slash {
+    color: var(--bg-bell);
 }
 
 .static_section {
@@ -23,9 +62,6 @@ input {
     cursor: pointer;
 }
 
-.chat_profile {
-    height: 96px;
-}
 
 .chat {
     height: calc(100vh - 192px);
@@ -39,7 +75,7 @@ input {
 }
 
 .active {
-    background-color: lightblue;
+    background-color: var(--bg-user);
 }
 
 .messages_list {
@@ -48,7 +84,7 @@ input {
 }
 
 .sent {
-    background-color: lightseagreen;
+    background-color: var(--bg-sent);
     margin: 1rem;
     height: 36px;
     border-radius: 0.6rem;
@@ -65,4 +101,8 @@ input {
     background-color: transparent;
     margin: 1rem;
     height: 36px;
+}
+
+.fa-microphone {
+    color: black;
 }
