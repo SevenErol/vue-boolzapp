@@ -2,7 +2,7 @@ i {
     font-size: 24px;
 }
 
-.col-10 input {
+ input {
     width: 100%;
 }
 
@@ -28,4 +28,8 @@ i {
     background-image: url(../img/mine.jpg);
     background-repeat: repeat;
     overflow-y: scroll;
+}
+
+.texting {
+    height: 96px;
 }
