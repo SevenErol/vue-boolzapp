@@ -1,4 +1,4 @@
-.fa-bell-slash {
+i {
     font-size: 24px;
 }
 
@@ -17,4 +17,15 @@
 .display_contacts {
     overflow-y: auto;
     height: calc(100vh - 240px);
+}
+
+.chat_profile {
+    height: 96px;
+}
+
+.chat {
+    height: calc(100vh - 192px);
+    background-image: url(../img/mine.jpg);
+    background-repeat: repeat;
+    overflow-y: scroll;
 }
