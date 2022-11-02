@@ -79,7 +79,8 @@
 
                         <div class="row p-2 display_contacts">
                             <div class="col-12 single_contact" v-for="(object, index) in contacts">
-                                <div class=" d-flex align-items-center" :class = "activeIndex === index ? 'active' : ''" @click = "setActiveIndex(index)">
+                                <div class=" d-flex align-items-center" :class="activeIndex === index ? 'active' : ''"
+                                    @click="setActiveIndex(index)">
 
                                     <img :src="'./assets/img/avatar'+ object.avatar +'.jpg'" alt=""
                                         class="img-fluid col-2">
@@ -99,7 +100,8 @@
                             <div class="col-3">
 
                                 <div class="p-1 d-flex align-items-center">
-                                    <img :src="'./assets/img/avatar'+ contacts[activeIndex].avatar +'.jpg'" alt="" class="img-fluid p-1 col-3">
+                                    <img :src="'./assets/img/avatar'+ contacts[activeIndex].avatar +'.jpg'" alt=""
+                                        class="img-fluid p-1 col-3">
                                     <h6 class="p-1">{{contacts[activeIndex].name}}</h6>
                                 </div>
 
@@ -116,10 +118,19 @@
                         </div>
 
                         <div class="chat">
-                            <div class="messages_list">
-                                <div v-for = "object in contacts[activeIndex].messages">
-                                    {{ object.message }}
+                            <div class="messages_list d-flex">
+                                <div class="received_column col-6">
+                                    <div v-for="object in contacts[activeIndex].messages" :class = "object.status === 'received' ? 'received' : 'transparent'">
+                                        <div class="p-1" v-show = "object.status === 'received'">{{object.message}}</div>
+                                    </div>
                                 </div>
+
+                                <div class="sent_column col-6">
+                                    <div v-for="object in contacts[activeIndex].messages" :class = "object.status === 'sent' ? 'sent' : 'transparent'">
+                                        <div class="p-1" v-show = "object.status === 'sent'">{{object.message}}</div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
