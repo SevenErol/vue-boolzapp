@@ -167,12 +167,30 @@ createApp({
                     ],
                 }
             ],
-            activeIndex: 0
+            activeIndex: 0,
+            newMessage: {
+                date: '',
+                message: '',
+                status: 'sent'
+            }
         }
     },
     methods: {
-        setActiveIndex (index) {
+        setActiveIndex(index) {
             this.activeIndex = index
+        },
+
+        sendMessage() {
+
+            if (this.newMessage.message !== '') {
+                this.contacts[this.activeIndex].messages.push(this.newMessage)
+                this.newMessage = {
+                    date: '',
+                    message: '',
+                    status: 'sent'
+                }
+            }
+
         }
     }
 }).mount('#app')

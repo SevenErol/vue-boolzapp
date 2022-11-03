@@ -206,7 +206,7 @@
                                 <div class="col-8">
 
                                     <div>
-                                        <input type="text" placeholder="Scrivi qui un messaggio">
+                                        <input type="text" placeholder="Scrivi qui un messaggio" v-model = "newMessage.message" @keyup.enter.stop = "sendMessage">
                                     </div>
 
                                 </div>
