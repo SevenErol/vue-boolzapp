@@ -21,6 +21,10 @@ img {
     --bs-gutter-x: 0;
 }
 
+#site_main .display_contacts {
+    display: block;
+}
+
 /* #endregion utilities */
 
 /* #region icons */

@@ -177,9 +177,27 @@ createApp({
                 date: '',
                 message: null,
                 status: 'received'
-            }
+            },
+            searchValue: ''
         }
     },
+
+    computed: {
+        contactsList() {
+
+            if (this.searchValue.trim().length > 0) {
+
+                console.log(this.contacts.filter(contact => contact.name.toLowerCase().startsWith(this.searchValue.trim().toLowerCase()) ));
+                
+
+                return this.contacts.filter(contact => contact.name.toLowerCase().startsWith(this.searchValue.trim().toLowerCase()) )
+               
+            }
+
+            return this.contacts
+        }
+    },
+
     methods: {
         setActiveIndex(index) {
             this.activeIndex = index
@@ -215,6 +233,7 @@ createApp({
                 status: 'received'
             }
 
-        }
+        },
     }
+
 }).mount('#app')

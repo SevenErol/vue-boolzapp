@@ -99,7 +99,7 @@
 
                                     <!-- input search chat -->
                                     <div class="col-10">
-                                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                                        <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchValue">
                                     </div>
 
                                 </div>
@@ -113,7 +113,7 @@
                         <div class="row p-2 display_contacts">
 
                             <!-- single contacts generated dinamically with Vue.js -->
-                            <div class="col-12 single_contact" v-for="(object, index) in contacts">
+                            <div class="col-12 single_contact" v-for="(object, index) in contactsList">
 
                                 <!-- ternary operator for class 'active' and function on click to capture selected index -->
                                 <div class=" d-flex align-items-center p-2"
