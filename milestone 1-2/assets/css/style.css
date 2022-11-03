@@ -76,12 +76,13 @@ i {
 }
 
 .messages_list {
-    width: 70%;
+    width: 60%;
     margin: auto;
 }
 
 .texting {
     height: 96px;
+    background-color: var(--bg-gray);
 }
 
 /* #endregion containers */
@@ -102,10 +103,12 @@ i {
 /* #region classes for different types of messages */
 .sent {
     background-color: var(--bg-sent);
+    align-self: end;
 }
 
 .received {
     background-color: aliceblue;
+    align-self: start;
 }
 
 .transparent {
@@ -116,7 +119,7 @@ i {
 .received,
 .transparent {
     margin: 1rem;
-    height: 36px;
+    max-width: 200px;
 }
 
 .sent,

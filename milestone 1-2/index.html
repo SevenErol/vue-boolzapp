@@ -75,7 +75,7 @@
                                         <div class="bell_container d-flex justify-content-center align-items-center">
                                             <i class="fa-solid fa-bell-slash"></i>
                                         </div>
-                                        
+
                                         <!-- description notify bell functions -->
                                         <div class="receive_notifications ms-3">
                                             <h6>Ricevi notifiche di nuovi messaggi</h6>
@@ -108,7 +108,7 @@
 
                         </div>
 
-                        
+
                         <!-- fourth row contacts displayer with overflow -->
                         <div class="row p-2 display_contacts">
 
@@ -116,8 +116,8 @@
                             <div class="col-12 single_contact" v-for="(object, index) in contacts">
 
                                 <!-- ternary operator for class 'active' and function on click to capture selected index -->
-                                <div class=" d-flex align-items-center p-2" :class="activeIndex === index ? 'active' : ''"
-                                    @click="setActiveIndex(index)">
+                                <div class=" d-flex align-items-center p-2"
+                                    :class="activeIndex === index ? 'active' : ''" @click="setActiveIndex(index)">
 
                                     <!-- img url generated dinamically -->
                                     <img :src="'./assets/img/avatar'+ object.avatar +'.jpg'" alt=""
@@ -170,33 +170,19 @@
                         <!-- chat display section with overflow -->
                         <div class="chat">
 
-                            <div class="messages_list d-flex">
+                            <div class="messages_list d-flex flex-column">
 
-                                <!-- column with received messages visible -->
-                                <div class="received_column col-6">
+                                <!-- dinamically generated messages -->
 
-                                    <!-- v-for directive to generate in DOM every message with rightful class -->
-                                    <div v-for="object in contacts[activeIndex].messages" :class = "object.status === 'received' ? 'received' : 'transparent'">
+                                <!-- v-for directive to generate in DOM every message with rightful class -->
+                                <div v-for="object in contacts[activeIndex].messages"
+                                    :class="object.status === 'received' ? 'received' : 'sent'">
 
-                                        <!-- v-show directive to show only the received messages in DOM -->
-                                        <div class="p-1" v-show = "object.status === 'received'">{{object.message}}</div>
-
-                                    </div>
+                                    <!-- single message -->
+                                    <div class="p-2">{{object.message}}</div>
 
                                 </div>
 
-                                <!-- column with sent messages visible -->
-                                <div class="sent_column col-6">
-
-                                    <!-- v-for directive to generate in DOM every message with rightful class -->
-                                    <div v-for="object in contacts[activeIndex].messages" :class = "object.status === 'sent' ? 'sent' : 'transparent'">
-
-                                        <!-- v-show directive to show only the received messages in DOM -->
-                                        <div class="p-1" v-show = "object.status === 'sent'">{{object.message}}</div>
-
-                                    </div>
-
-                                </div>
 
                             </div>
                         </div>
@@ -243,7 +229,7 @@
                 </div>
 
             </div>
-            
+
         </main>
 
     </div>
