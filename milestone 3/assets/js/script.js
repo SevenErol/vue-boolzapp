@@ -168,10 +168,15 @@ createApp({
                 }
             ],
             activeIndex: 0,
-            newMessage: {
+            newMessageSent: {
                 date: '',
                 message: '',
                 status: 'sent'
+            },
+            newMessageReceived: {
+                date: '',
+                message: null,
+                status: 'received'
             }
         }
     },
@@ -182,13 +187,32 @@ createApp({
 
         sendMessage() {
 
-            if (this.newMessage.message !== '') {
-                this.contacts[this.activeIndex].messages.push(this.newMessage)
-                this.newMessage = {
+            if (this.newMessageSent.message !== '') {
+
+                this.contacts[this.activeIndex].messages.push(this.newMessageSent)
+
+                this.newMessageSent = {
                     date: '',
                     message: '',
                     status: 'sent'
                 }
+
+                setTimeout(this.receiveMessage, 1000)
+
+            }
+
+        },
+
+        receiveMessage() {
+
+            this.newMessageReceived.message = 'ok'
+
+            this.contacts[this.activeIndex].messages.push(this.newMessageReceived)
+
+            this.newMessageReceived = {
+                date: '',
+                message: '',
+                status: 'received'
             }
 
         }
