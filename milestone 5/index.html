@@ -192,8 +192,11 @@
                                     :class="object.status === 'received' ? 'received' : 'sent'" class="dropdown">
 
                                     <!-- single message with dropdowm menù -->
-                                    <div class="p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        {{object.message}}</div>
+                                    <div class="p-2 position-relative" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {{object.message}}
+                                        <div class="time_message position-absolute bottom-0 end-0">{{object.date.substring(10,
+                                            16)}}</div>
+                                    </div>
 
 
                                     <!-- dropdown menù options -->
