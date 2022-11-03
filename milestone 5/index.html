@@ -126,8 +126,10 @@
 
                                     <!-- userName and last sent message -->
                                     <div class="p-2 col-10">
+                                        <p class="m-0">ultimo messaggio il
+                                            {{object.messages[object.messages.length-1].date.substring(0, 10)}}</p>
                                         <h5 class="m-0">{{object.name}}</h5>
-                                        <p class="m-0">Ultimo messaggio inviato</p>
+                                        <p class="m-0">{{object.messages[object.messages.length-1].message}}</p>
                                     </div>
 
                                 </div>
@@ -145,12 +147,22 @@
                         <div class="row chat_profile align-items-center justify-content-between">
 
                             <!-- column with image and contact name -->
-                            <div class="col-3">
+                            <div class="col-4">
 
                                 <div class="p-1 d-flex align-items-center">
+                                    
                                     <img :src="'./assets/img/avatar'+ contacts[activeIndex].avatar +'.jpg'" alt=""
                                         class="img-fluid p-1 col-3">
-                                    <h6 class="p-1">{{contacts[activeIndex].name}}</h6>
+
+                                    <div class="name_and_access col-10">
+                                        <h6 class="p-1 m-0">{{contacts[activeIndex].name}}</h6>
+                                        <p class="m-0 p-1">Ultimo accesso il
+                                            {{contacts[activeIndex].messages[contacts[activeIndex].messages.length-1].date.substring(0,
+                                            10)}} alle
+                                            {{contacts[activeIndex].messages[contacts[activeIndex].messages.length-1].date.substring(10,
+                                            19)}} </p>
+                                    </div>
+
                                 </div>
 
                             </div>
@@ -179,13 +191,16 @@
                                 <div v-for="(object,index) in contacts[activeIndex].messages"
                                     :class="object.status === 'received' ? 'received' : 'sent'" class="dropdown">
 
-                                    <!-- single message -->
-                                    <div class="p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" >{{object.message}}</div>
+                                    <!-- single message with dropdowm menù -->
+                                    <div class="p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {{object.message}}</div>
 
 
+                                    <!-- dropdown menù options -->
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="#">Message info</a></li>
-                                        <li><a class="dropdown-item" href="#" @click = "deleteMessage(index)">Delete message</a></li>
+                                        <li><a class="dropdown-item" href="#" @click="deleteMessage(index)">Delete
+                                                message</a></li>
                                     </ul>
 
 
