@@ -1,0 +1,140 @@
+:root {
+    --bg-gray: #EAEAEA;
+    --bg-user: #E9EBEB;
+    --bg-bell: #8EDAFC;
+    --bg-sent: #D5F9BA;
+    --icon-color: #B1B1B1;
+}
+
+/* #region utilities */
+
+input {
+    width: 100%;
+}
+
+img {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+}
+
+#site_main .row {
+    --bs-gutter-x: 0;
+}
+
+#site_main .display_contacts {
+    display: block;
+}
+
+/* #endregion utilities */
+
+/* #region icons */
+
+i {
+    font-size: 24px;
+    color: var(--icon-color) ;
+}
+
+.fa-microphone {
+    color: black;
+}
+
+.fa-bell-slash {
+    color: var(--bg-bell);
+}
+
+/* #endregion icons */
+
+/* #region containers with fixed height and background colors */
+
+.static_section {
+    height: 240px;
+}
+
+.my_profile,
+.chat_profile {
+    background-color: var(--bg-gray);
+    height: 96px;
+}
+
+.bell_section {
+    background-color:var(--bg-bell);
+}
+
+.bell_container {
+    aspect-ratio: 1 / 1;
+    background-color: white;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.display_contacts {
+    overflow-y: auto;
+    height: calc(100vh - 240px);
+}
+
+.chat {
+    height: calc(100vh - 192px);
+    background-image: url(../img/mine.jpg);
+    background-repeat: repeat;
+    overflow-y: scroll;
+}
+
+.messages_list {
+    width: 60%;
+    margin: auto;
+}
+
+.texting {
+    height: 96px;
+    background-color: var(--bg-gray);
+}
+
+/* #endregion containers */
+
+/* #region hover effect on single contact */
+
+.single_contact:hover {
+    cursor: pointer;
+}
+
+/* #endregion hover effect */
+
+/* active class for friend profile */
+.active {
+    background-color: var(--bg-user);
+}
+
+/* #region classes for different types of messages */
+.sent {
+    background-color: var(--bg-sent);
+    align-self: end;
+}
+
+.received {
+    background-color: aliceblue;
+    align-self: start;
+}
+
+.transparent {
+    background-color: transparent;  
+}
+
+.sent,
+.received,
+.transparent {
+    margin: 1rem;
+    max-width: 200px;
+}
+
+.sent,
+.received {
+    border-radius: 0.6rem;
+}
+
+/* #endregion classes for different types of messages */
+
+/* border for my profile section */
+.my_profile {
+    border-right: 1px solid lightgray;
+}
+
