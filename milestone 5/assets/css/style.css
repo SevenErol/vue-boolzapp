@@ -105,6 +105,10 @@ i {
 }
 
 /* #region classes for different types of messages */
+.time_message {
+    font-size: 10px;
+}
+
 .sent {
     background-color: var(--bg-sent);
     align-self: end;
@@ -138,7 +142,5 @@ i {
     border-right: 1px solid lightgray;
 }
 
-.time_message {
-    font-size: 10px;
-}
+
 
