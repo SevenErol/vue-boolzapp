@@ -34,7 +34,8 @@ i {
     color: var(--icon-color) ;
 }
 
-.fa-microphone {
+.fa-microphone,
+.fa-paper-plane {
     color: black;
 }
 
