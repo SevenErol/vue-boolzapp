@@ -204,7 +204,7 @@ createApp({
 
         sendMessage() {
 
-            if (this.newMessageSent.message !== '') {
+            if (this.newMessageSent.message !== '' && this.newMessageSent.message.replace(/\s/g, '').length > 0) {
 
                 this.contactsList[this.activeIndex].messages.push(this.newMessageSent)
 
@@ -221,6 +221,8 @@ createApp({
                 setTimeout(this.receiveMessage, 1000)
 
             }
+
+            this.newMessageSent.message = ''
 
         },
 
