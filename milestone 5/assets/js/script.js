@@ -179,7 +179,13 @@ createApp({
                 status: 'received'
             },
             searchValue: '',
-            lastContactInfo: []
+            lastContactInfo: [],
+            randomPhrase: [
+                "Io diventerò re dei pirati!",
+                "tu sei chi scegli e cerchi di essere",
+                "eh si mò me lo segno",
+                "Questa piccola parte della mia vita può chiamarsi felicità"
+            ]
         }
     },
 
@@ -228,7 +234,7 @@ createApp({
 
         receiveMessage() {
 
-            this.newMessageReceived.message = 'ok'
+            this.newMessageReceived.message = this.randomPhrase[Math.floor(Math.random() * (this.randomPhrase.length - 0) + 0)]
 
             this.contactsList[this.activeIndex].messages.push(this.newMessageReceived)
 
