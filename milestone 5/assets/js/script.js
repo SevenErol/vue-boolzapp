@@ -185,7 +185,9 @@ createApp({
                 "tu sei chi scegli e cerchi di essere",
                 "eh si mò me lo segno",
                 "Questa piccola parte della mia vita può chiamarsi felicità"
-            ]
+            ],
+            online: false,
+            writing: "Sta scrivendo..."
         }
     },
 
@@ -222,7 +224,7 @@ createApp({
                     status: 'sent'
                 }
 
-
+                this.online = true
 
                 setTimeout(this.receiveMessage, 1000)
 
@@ -245,6 +247,18 @@ createApp({
                 message: '',
                 status: 'received'
             }
+
+            this.writing = "Online"
+
+            setTimeout(this.lastAccess, 6000)
+
+        },
+
+        lastAccess() {
+            
+            this.online = false
+
+            this.writing = "Sta scrivendo..."
 
         },
 

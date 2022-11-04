@@ -157,11 +157,13 @@
 
                                     <div class="name_and_access col-10">
                                         <h6 class="p-1 m-0">{{contactsList[activeIndex].name}}</h6>
-                                        <p class="m-0 p-1">Ultimo accesso il
+                                        <p class="m-0 p-1" v-if="!online">Ultimo accesso il
                                             {{contactsList[activeIndex].messages[contactsList[activeIndex].messages.length-1].date.substring(0,
                                             10)}} alle
                                             {{contactsList[activeIndex].messages[contactsList[activeIndex].messages.length-1].date.substring(10,
                                             19)}} </p>
+
+                                        <p v-else>{{writing}}</p>
                                     </div>
 
                                 </div>
