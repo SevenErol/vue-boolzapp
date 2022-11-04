@@ -151,15 +151,15 @@
 
                                 <div class="p-1 d-flex align-items-center">
                                     
-                                    <img :src="'./assets/img/avatar'+ contacts[activeIndex].avatar +'.jpg'" alt=""
+                                    <img :src="'./assets/img/avatar'+ contactsList[activeIndex].avatar +'.jpg'" alt=""
                                         class="img-fluid p-1 col-3">
 
                                     <div class="name_and_access col-10">
-                                        <h6 class="p-1 m-0">{{contacts[activeIndex].name}}</h6>
+                                        <h6 class="p-1 m-0">{{contactsList[activeIndex].name}}</h6>
                                         <p class="m-0 p-1">Ultimo accesso il
-                                            {{contacts[activeIndex].messages[contacts[activeIndex].messages.length-1].date.substring(0,
+                                            {{contactsList[activeIndex].messages[contactsList[activeIndex].messages.length-1].date.substring(0,
                                             10)}} alle
-                                            {{contacts[activeIndex].messages[contacts[activeIndex].messages.length-1].date.substring(10,
+                                            {{contactsList[activeIndex].messages[contactsList[activeIndex].messages.length-1].date.substring(10,
                                             19)}} </p>
                                     </div>
 
@@ -188,7 +188,7 @@
                                 <!-- dinamically generated messages -->
 
                                 <!-- v-for directive to generate in DOM every message with rightful class -->
-                                <div v-for="(object,index) in contacts[activeIndex].messages"
+                                <div v-for="(object,index) in contactsList[activeIndex].messages"
                                     :class="object.status === 'received' ? 'received' : 'sent'" class="dropdown">
 
                                     <!-- single message with dropdowm menù -->
