@@ -169,17 +169,17 @@ createApp({
             ],
             activeIndex: 0,
             newMessageSent: {
-                date: '',
+                date: '04/11/2022 15:00:00',
                 message: '',
                 status: 'sent'
             },
             newMessageReceived: {
-                date: '',
+                date: '04/11/2022 15:00:00',
                 message: null,
                 status: 'received'
             },
             searchValue: '',
-            hiddenMenuValue: false
+            lastContactInfo: []
         }
     },
 
@@ -188,11 +188,8 @@ createApp({
 
             if (this.searchValue.trim().length > 0) {
 
-                console.log(this.contacts.filter(contact => contact.name.toLowerCase().startsWith(this.searchValue.trim().toLowerCase()) ));
-                
+                return this.contacts.filter(contact => contact.name.toLowerCase().startsWith(this.searchValue.trim().toLowerCase()))
 
-                return this.contacts.filter(contact => contact.name.toLowerCase().startsWith(this.searchValue.trim().toLowerCase()) )
-               
             }
 
             return this.contacts
@@ -202,19 +199,24 @@ createApp({
     methods: {
         setActiveIndex(index) {
             this.activeIndex = index
+
         },
 
         sendMessage() {
 
             if (this.newMessageSent.message !== '') {
 
-                this.contacts[this.activeIndex].messages.push(this.newMessageSent)
+                this.contactsList[this.activeIndex].messages.push(this.newMessageSent)
+
+                this.lastContactInfo[this.activeIndex] = this.newMessageSent
 
                 this.newMessageSent = {
-                    date: '',
+                    date: '04/11/2022 15:00:00',
                     message: '',
                     status: 'sent'
                 }
+
+
 
                 setTimeout(this.receiveMessage, 1000)
 
@@ -226,21 +228,37 @@ createApp({
 
             this.newMessageReceived.message = 'ok'
 
-            this.contacts[this.activeIndex].messages.push(this.newMessageReceived)
+            this.contactsList[this.activeIndex].messages.push(this.newMessageReceived)
+
+            this.lastContactInfo[this.activeIndex] = this.newMessageReceived
 
             this.newMessageReceived = {
-                date: '',
+                date: '04/11/2022 15:00:00',
                 message: '',
                 status: 'received'
             }
 
         },
 
-        deleteMessage (index) {
+        deleteMessage(index) {
 
-            this.contacts[this.activeIndex].messages.splice(index, 1)
+            this.contacts[this.activeIndex].messages[index].message = "Questo messaggio è stato eliminato"
 
+            // this.lastContactInfo[this.activeIndex] = this.contactsList[this.activeIndex].messages[this.contactsList[this.activeIndex].messages.length-1]
+
+
+        },
+
+        getLastMessages(contactList) {
+
+            contactList.forEach(contact => {
+                this.lastContactInfo.push(contact.messages[contact.messages.length - 1])
+            });
         }
+    },
+
+    mounted() {
+        this.getLastMessages(this.contactsList)
     }
 
 }).mount('#app')

@@ -113,6 +113,7 @@
                         <!-- fourth row contacts displayer with overflow -->
                         <div class="row p-2 display_contacts">
 
+
                             <!-- single contacts generated dinamically with Vue.js -->
                             <div class="col-12 single_contact" v-for="(object, index) in contactsList">
 
@@ -150,7 +151,7 @@
                             <div class="col-4">
 
                                 <div class="p-1 d-flex align-items-center">
-                                    
+
                                     <img :src="'./assets/img/avatar'+ contactsList[activeIndex].avatar +'.jpg'" alt=""
                                         class="img-fluid p-1 col-3">
 
@@ -183,32 +184,38 @@
                         <!-- chat display section with overflow -->
                         <div class="chat">
 
-                            <div class="messages_list d-flex flex-column">
+                            <div>
 
                                 <!-- dinamically generated messages -->
 
-                                <!-- v-for directive to generate in DOM every message with rightful class -->
-                                <div v-for="(object,index) in contactsList[activeIndex].messages"
-                                    :class="object.status === 'received' ? 'received' : 'sent'" class="dropdown">
+                                <div v-if="contactsList[activeIndex].messages.length > 0"
+                                    class="messages_list d-flex flex-column">
 
-                                    <!-- single message with dropdowm menù -->
-                                    <div class="p-2 position-relative" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        {{object.message}}
-                                        <div class="time_message position-absolute bottom-0 end-0">{{object.date.substring(10,
-                                            16)}}</div>
+                                    <!-- v-for directive to generate in DOM every message with rightful class -->
+                                    <div v-for="(object,index) in contactsList[activeIndex].messages"
+                                        :class="object.status === 'received' ? 'received': 'sent'" class="dropdown">
+
+                                        <!-- single message with dropdowm menù -->
+                                        <div class="p-2 position-relative" type="button" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                            {{object.message}}
+                                            <div class="time_message position-absolute bottom-0 end-0">
+                                                {{object.date.substring(10,
+                                                16)}}</div>
+                                        </div>
+
+
+                                        <!-- dropdown menù options -->
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Message info</a></li>
+                                            <li><a class="dropdown-item" href="#" @click="deleteMessage(index)">Delete
+                                                    message</a></li>
+                                        </ul>
+
+
                                     </div>
 
-
-                                    <!-- dropdown menù options -->
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Message info</a></li>
-                                        <li><a class="dropdown-item" href="#" @click="deleteMessage(index)">Delete
-                                                message</a></li>
-                                    </ul>
-
-
                                 </div>
-
 
                             </div>
                         </div>

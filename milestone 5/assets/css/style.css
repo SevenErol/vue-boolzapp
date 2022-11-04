@@ -119,13 +119,9 @@ i {
     align-self: start;
 }
 
-.transparent {
-    background-color: transparent;  
-}
 
 .sent,
-.received,
-.transparent {
+.received {
     margin: 1rem;
     max-width: 200px;
 }
