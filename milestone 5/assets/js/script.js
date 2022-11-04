@@ -210,7 +210,7 @@ createApp({
 
         },
 
-        sendMessage() {
+        async sendMessage() {
 
             if (this.newMessageSent.message !== '' && this.newMessageSent.message.replace(/\s/g, '').length > 0) {
 
@@ -232,9 +232,11 @@ createApp({
 
             this.newMessageSent.message = ''
 
+            await nextTick(this.scrollDown())
+
         },
 
-        receiveMessage() {
+        async receiveMessage() {
 
             this.newMessageReceived.message = this.randomPhrase[Math.floor(Math.random() * (this.randomPhrase.length - 0) + 0)]
 
@@ -252,10 +254,12 @@ createApp({
 
             setTimeout(this.lastAccess, 6000)
 
+            await nextTick(this.scrollDown())
+            
         },
 
         lastAccess() {
-            
+
             this.online = false
 
             this.writing = "Sta scrivendo..."
@@ -276,11 +280,23 @@ createApp({
             contactList.forEach(contact => {
                 this.lastContactInfo.push(contact.messages[contact.messages.length - 1])
             });
+        },
+
+        scrollDown() {
+            let chat = document.querySelector(".chat")
+
+            let scrollHeight = chat.scrollHeight
+
+            chat.scrollTop = scrollHeight
         }
     },
 
     mounted() {
         this.getLastMessages(this.contactsList)
+    },
+
+    updated() {
+        this.scrollDown()
     }
 
 }).mount('#app')
