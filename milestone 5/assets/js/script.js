@@ -196,7 +196,7 @@ createApp({
 
             if (this.searchValue.trim().length > 0) {
 
-                return this.contacts.filter(contact => contact.name.toLowerCase().startsWith(this.searchValue.trim().toLowerCase()))
+                return this.contacts.filter(contact => contact.name.toLowerCase().includes(this.searchValue.trim().toLowerCase()))
 
             }
 
