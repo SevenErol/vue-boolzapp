@@ -139,5 +139,15 @@ i {
     border-right: 1px solid lightgray;
 }
 
+/* #region default behaviours */
+.default_p,
+.default_title {
+    font-style: italic;
+    color: var(--icon-color);
+}
 
+.default_image {
+    filter: grayscale(50);
+}
 
+/* #endregion default behaviours */

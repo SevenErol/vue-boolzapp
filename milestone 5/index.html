@@ -111,7 +111,7 @@
 
 
                         <!-- fourth row contacts displayer with overflow -->
-                        <div class="row p-2 display_contacts">
+                        <div class="row p-2 display_contacts" v-if="contactsList.length > 0">
 
 
                             <!-- single contacts generated dinamically with Vue.js -->
@@ -139,6 +139,14 @@
 
                         </div>
 
+                        <!-- alternative when contacts list length is equal to zero -->
+
+                        <div class="row p-2 display_contacts" v-else>
+                            <div class="col-12">
+                                <p class="default_p p-3 text-center">Nessun utente corrisponde alla ricerca</p>
+                            </div>
+                        </div>
+
                     </div>
 
                     <!-- right column of the page -->
@@ -150,7 +158,7 @@
                             <!-- column with image and contact name -->
                             <div class="col-4">
 
-                                <div class="p-1 d-flex align-items-center">
+                                <div class="p-1 d-flex align-items-center" v-if="contactsList.length > 0">
 
                                     <img :src="'./assets/img/avatar'+ contactsList[activeIndex].avatar +'.jpg'" alt=""
                                         class="img-fluid p-1 col-3">
@@ -166,6 +174,16 @@
                                         <p v-else>{{writing}}</p>
                                     </div>
 
+                                </div>
+
+                                <!-- alternative when contacts list length is equal to zero -->
+                                <div v-else class="p-1 d-flex align-items-center">
+                                    <img src="./assets/img/avatar_default.png" alt=""
+                                    class="img-fluid p-1 col-3 default_image">
+
+                                    <div class="name_and_access col-10">
+                                        <h6 class="default_title">Nessun utente trovato</h6>
+                                    </div>
                                 </div>
 
                             </div>
@@ -184,13 +202,13 @@
                         </div>
 
                         <!-- chat display section with overflow -->
-                        <div class="chat">
+                        <div class="chat" v-if="contactsList.length > 0">
 
                             <div>
 
                                 <!-- dinamically generated messages -->
 
-                                <div v-if="contactsList[activeIndex].messages.length > 0"
+                                <div
                                     class="messages_list d-flex flex-column">
 
                                     <!-- v-for directive to generate in DOM every message with rightful class -->
@@ -222,6 +240,10 @@
                             </div>
                         </div>
 
+                        <!-- alternative when contacts list length is equal to zero -->
+
+                        <div v-else class="chat"></div>
+
                         <!-- bottom texting area -->
                         <div class="texting d-flex align-items-center">
 
@@ -240,9 +262,14 @@
                                 <!-- second column for input messages -->
                                 <div class="col-8">
 
-                                    <div>
+                                    <div v-if="contactsList.length > 0">
                                         <input type="text" placeholder="Scrivi qui un messaggio"
                                             v-model="newMessageSent.message" @keyup.enter.stop="sendMessage()">
+                                    </div>
+
+                                    <!-- alternative when contacts list length is equal to zero -->
+                                    <div v-else>
+                                        <input type="text" placeholder="Scrivi qui un messaggio">
                                     </div>
 
                                 </div>
