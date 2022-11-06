@@ -293,9 +293,11 @@ createApp({
 
             const string = dt.toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS);
 
-            this.newMessageSent.date = string
+            const newString = string.replace(',', ' ')
 
-            this.newMessageReceived.date = string
+            this.newMessageSent.date = newString
+
+            this.newMessageReceived.date = newString
         }
     },
 
