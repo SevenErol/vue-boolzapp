@@ -169,12 +169,12 @@ createApp({
             ],
             activeIndex: 0,
             newMessageSent: {
-                date: '04/11/2022 15:00:00',
+                date: '',
                 message: '',
                 status: 'sent'
             },
             newMessageReceived: {
-                date: '04/11/2022 15:00:00',
+                date: '',
                 message: null,
                 status: 'received'
             },
@@ -210,7 +210,7 @@ createApp({
 
         },
 
-        async sendMessage() {
+        sendMessage() {
 
             if (this.newMessageSent.message !== '' && this.newMessageSent.message.replace(/\s/g, '').length > 0) {
 
@@ -219,7 +219,7 @@ createApp({
                 this.lastContactInfo[this.activeIndex] = this.newMessageSent
 
                 this.newMessageSent = {
-                    date: '04/11/2022 15:00:00',
+                    date: '',
                     message: '',
                     status: 'sent'
                 }
@@ -232,11 +232,9 @@ createApp({
 
             this.newMessageSent.message = ''
 
-            await nextTick(this.scrollDown())
-
         },
 
-        async receiveMessage() {
+        receiveMessage() {
 
             this.newMessageReceived.message = this.randomPhrase[Math.floor(Math.random() * (this.randomPhrase.length - 0) + 0)]
 
@@ -245,7 +243,7 @@ createApp({
             this.lastContactInfo[this.activeIndex] = this.newMessageReceived
 
             this.newMessageReceived = {
-                date: '04/11/2022 15:00:00',
+                date: '',
                 message: '',
                 status: 'received'
             }
@@ -254,8 +252,6 @@ createApp({
 
             setTimeout(this.lastAccess, 6000)
 
-            await nextTick(this.scrollDown())
-            
         },
 
         lastAccess() {
@@ -288,6 +284,18 @@ createApp({
             let scrollHeight = chat.scrollHeight
 
             chat.scrollTop = scrollHeight
+        },
+
+        getTime() {
+            const DateTime = luxon.DateTime;
+
+            const dt = DateTime.now();
+
+            const string = dt.toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS);
+
+            this.newMessageSent.date = string
+
+            this.newMessageReceived.date = string
         }
     },
 
@@ -297,6 +305,8 @@ createApp({
 
     updated() {
         this.scrollDown()
+
+        this.getTime()
     }
 
 }).mount('#app')
